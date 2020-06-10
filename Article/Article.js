@@ -122,7 +122,7 @@ function articleMaker (title, date, firstParagraph, secondParagraph, thirdParagr
   let p2 = document.createElement ('p');
   let p3 = document.createElement ('p');
   let button = document.createElement ('span');
-  let readButton = document.createElement ('button');
+  
 
   titleText.textContent = title;
   dateText.textContent = date;
@@ -142,7 +142,6 @@ function articleMaker (title, date, firstParagraph, secondParagraph, thirdParagr
   articleText.appendChild (p1);
   articleText.appendChild (p2);
   articleText.appendChild (p3);
-  articleText.appendChild (readButton);
   article.appendChild (button);
 
   button.addEventListener ('click', ()=> {article.classList.toggle('article-open')});
