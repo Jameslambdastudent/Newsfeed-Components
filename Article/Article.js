@@ -88,6 +88,8 @@ const data = [
   }
 ];
 
+
+
 /* Step 1: Write a component called 'articleMaker' to create an article. You want your component to return markup like the template below: 
 
   <div class="article">
@@ -111,3 +113,44 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+function articleMaker (title, date, firstParagraph, secondParagraph, thirdParagraph){
+  let article = document.createElement ('div');
+  let titleText = document.createElement ('h2');
+  let dateText = document.createElement ('p');
+  let articleText = document.createElement ('div');
+  let p1 = document.createElement ('p');
+  let p2 = document.createElement ('p');
+  let p3 = document.createElement ('p');
+  let button = document.createElement ('span');
+  let readButton = document.createElement ('button');
+
+  titleText.textContent = title;
+  dateText.textContent = date;
+  p1.textContent = firstParagraph;
+  p2.textContent = secondParagraph;
+  p3.textContent = thirdParagraph;
+  button.textContent = 'Read more';
+ 
+
+  article.classList.add ('article');
+  button.classList.add ('expandButton');
+  dateText.classList.add ('date');
+  
+  article.appendChild (titleText);
+  article.appendChild (dateText);
+  article.appendChild (articleText);
+  articleText.appendChild (p1);
+  articleText.appendChild (p2);
+  articleText.appendChild (p3);
+  articleText.appendChild (readButton);
+  article.appendChild (button);
+
+  button.addEventListener ('click', ()=> {article.classList.toggle('article-open')});
+  return article;
+}
+
+const articleContainer = document.querySelector ('.articles');
+
+data.forEach ((obj)=> {
+ articleContainer.appendChild (articleMaker (obj.title, obj.date, obj.firstParagraph, obj.secondParagraph, obj.thirdParagraph))
+});
